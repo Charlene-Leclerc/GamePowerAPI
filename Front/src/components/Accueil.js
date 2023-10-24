@@ -26,12 +26,12 @@ export default function Accueil() {
     <section className="accueil">
       {game.slice(0, 18).map((elem, id) => {
         return (
-          <div key={id}>
+          <button key={id}>
             <h3>{elem.title}</h3>
             <p>{elem.description}</p>
             <img src={elem.image} alt="" />
             <p>Prix :{elem.worth}</p>
-          </div>
+          </button>
         );
       })}
     </section>
