@@ -11,6 +11,7 @@ router.post("/create", async (req, res) => {
     const newGame = new GameModel({
       name,
       price,
+      userId,
     });
 
     const createdGame = await newGame.save();
