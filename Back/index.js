@@ -4,44 +4,48 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 
 mongoose.connect(
-  "mongodb+srv://HerbillonMia:68Nr575aB7iSJnxd@herbillonmia.vsxvity.mongodb.net/GamePowerAPI"
+  "mongodb+srv://HerbillonMia:68Nr575aB7iSJnxd@herbillonmia.vsxvity.mongodb.net/GamePowerAPI",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
 );
 
 // Définissez le schéma en dehors des routes
-const listeSchema = new mongoose.Schema({
+const gameSchema = new mongoose.Schema({
   name: String,
   price: Number,
 });
 
 // Créez le modèle à partir du schéma
-const Liste = mongoose.model("Game", listeSchema);
-
-app.use(express.json());
+const Game = mongoose.model("Game", gameSchema);
 
 // CREATE
 app.post("/create", async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name, price } = req.body;
 
-    const newListe = new Liste({
+    const newGame = new Game({
       name,
+      price,
     });
 
-    const createdListe = await newListe.save();
+    const createdGame = await newGame.save();
 
-    res.status(201).json(createdListe);
+    res.status(201).json(createdGame);
   } catch (error) {
-    res.status(500).json({ error: "Erreur lors de la création de la liste." });
+    res.status(500).json({ error: "Erreur lors de la création du jeu." });
   }
 });
 
 // READ
 app.get("/", async (req, res) => {
   try {
-    const allItems = await Liste.find();
-    res.json(allItems);
+    const allGames = await Game.find();
+    res.json(allGames);
   } catch (error) {
     res.status(500).json({ error: "Erreur lors de la lecture." });
   }
@@ -52,10 +56,10 @@ app.put("/update/:id", async (req, res) => {
   try {
     const itemId = req.params.id; // ID de l'élément à mettre à jour
     const updatedData = req.body; // Les nouvelles données
-    const updatedItem = await Liste.findByIdAndUpdate(itemId, updatedData, {
+    const updatedGame = await Game.findByIdAndUpdate(itemId, updatedData, {
       new: true,
     });
-    res.json(updatedItem);
+    res.json(updatedGame);
   } catch (error) {
     res.status(500).json({ error: "Erreur lors de la mise à jour." });
   }
@@ -65,8 +69,8 @@ app.put("/update/:id", async (req, res) => {
 app.delete("/delete/:id", async (req, res) => {
   try {
     const itemId = req.params.id; // ID de l'élément à supprimer
-    await Liste.findByIdAndRemove(itemId);
-    res.json({ message: "Élément supprimé avec succès." });
+    await Game.findByIdAndRemove(itemId);
+    res.json({ message: "Jeu supprimé avec succès." });
   } catch (error) {
     res.status(500).json({ error: "Erreur lors de la suppression." });
   }
@@ -78,8 +82,8 @@ app.all("*", (req, res) => {
 });
 
 //SERVEUR
-// const PORT = 3000; // Define the port
+const PORT = 3000; // Define the port
 
-app.listen(3100, () => {
-  console.log(`👩🏻‍💻`);
+app.listen(PORT, () => {
+  console.log(`👩🏻‍💻 Server is running on port ${PORT}`);
 });

@@ -1,4 +1,4 @@
-const Liste = mongoose.model("Game", {
+const Game = mongoose.model("Game", {
   name: String,
   price: Number,
 });
