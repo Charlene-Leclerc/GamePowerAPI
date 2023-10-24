@@ -1,11 +1,14 @@
 import "./App.css";
-import API from "./components/API.js";
+import Header from "../src/components/Header";
+import Accueil from "./components/Accueil";
+// import API from "./components/API.js";
 
 export default function App() {
   return (
     <section>
       <h1>Game Power API</h1>
-      <API />
+      <Header />
+      <Accueil />
     </section>
   );
 }
