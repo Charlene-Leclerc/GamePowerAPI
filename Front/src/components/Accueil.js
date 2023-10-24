@@ -8,9 +8,7 @@ export default function Accueil() {
     const fetchDatas = async () => {
       //Lecture de la BD
       try {
-        const responses = await axios.get(
-          "http://localhost:3000/giveaways?limite=20"
-        );
+        const responses = await axios.get("http://localhost:3000/giveaways");
         console.log(responses);
         setGame(responses.data);
         //Si erreur
