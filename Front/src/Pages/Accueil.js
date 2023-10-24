@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+// import { useNavigate } from "react-router-dom"; //rappel
 
 export default function Accueil() {
   const [game, setGame] = useState([]);
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDatas = async () => {
@@ -26,7 +28,12 @@ export default function Accueil() {
     <section className="accueil">
       {game.slice(0, 18).map((elem, id) => {
         return (
-          <button key={id}>
+          <button
+            key={id}
+            // onClick={() => {
+            //   navigate("/");
+            // }}
+          >
             <h3>{elem.title}</h3>
             <p>{elem.description}</p>
             <img src={elem.image} alt="" />
