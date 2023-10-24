@@ -24,9 +24,9 @@ export default function Accueil() {
   }, []);
   return (
     <section className="accueil">
-      {game.slice(0, 18).map((elem, index) => {
+      {game.slice(0, 18).map((elem, id) => {
         return (
-          <div key={index}>
+          <div key={id}>
             <h3>{elem.title}</h3>
             <p>{elem.description}</p>
             <img src={elem.image} alt="" />
