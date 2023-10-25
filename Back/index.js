@@ -15,12 +15,15 @@ mongoose.connect(
     useUnifiedTopology: true,
   }
 );
+
+const gamePowerId = require("./Routes/gamePowerId");
 const gamePower = require("./Routes/gamePower");
 const gameRoutes = require("./Routes/gameRoutes");
 const userRoutes = require("./Routes/userRoutes");
 app.use(gameRoutes);
 app.use(userRoutes);
 app.use(gamePower);
+app.use(gamePowerId);
 
 const PORT = 3000;
 app.listen(PORT, () => {
