@@ -26,7 +26,7 @@ export default function Accueil() {
   }, []);
   return (
     <section className="accueil">
-      {game.slice(0, 18).map((elem, id) => {
+      {game.slice(0, 30).map((elem, id) => {
         console.log(elem.id);
         return (
           <button
