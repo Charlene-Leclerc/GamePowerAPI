@@ -1,14 +1,15 @@
-import "./App.css";
-import Header from "../src/components/Header";
-import Accueil from "./Pages/Accueil";
-// import API from "./components/API.js";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Accueil from "./Pages/Accueil"; // Votre composant Accueil
 
-export default function App() {
+function App() {
   return (
-    <section>
-      <h1>Game Power API</h1>
-      <Header />
-      <Accueil />
-    </section>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Accueil />} />
+      </Routes>
+    </Router>
   );
 }
+
+export default App;

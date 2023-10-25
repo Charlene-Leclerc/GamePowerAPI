@@ -44,3 +44,6 @@ export default function Accueil() {
     </section>
   );
 }
+// export default function ok() {
+//   return <p> je suis dans accueil </p>;
+// }
