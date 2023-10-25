@@ -17,6 +17,7 @@ h1 {
 .accueil button {
   width: 30vw;
   height: 65vh;
+  cursor: pointer;
 }
 .accueil img {
   width: 90%;
