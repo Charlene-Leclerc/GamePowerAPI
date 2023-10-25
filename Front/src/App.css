@@ -33,3 +33,12 @@ h1 {
   font-weight: bold;
   overflow: auto;
 }
+.header p {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
