@@ -1,8 +1,10 @@
 const GameModel = require("../model/GameModal");
 
 const express = require("express");
+const cors = require("cors");
 const router = express.Router();
 
+router.use(cors());
 // CREATE
 router.post("/create", async (req, res) => {
   try {
